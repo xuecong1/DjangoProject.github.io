@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>开课状态</title>
+    <style>
+        body {
+            background-color: #F7F7F7;
+        }
+
+        table {
+            width: 600px;
+            margin: 100px auto auto;
+            border-collapse: collapse;
+            background-color: #FFF;
+            border-radius: 5px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: center;
+            border: 1px solid #DDD;
+        }
+
+        th {
+            background-color: #72a1ef;
+            font-size: 16px;
+            color: #323f41;
+        }
+
+        h1 {
+            color: #3b5998;
+            margin-bottom: 20px;
+            text-align: center;
+            height: 0px;
+        }
+
+        td {
+            font-size: 14px;
+            color: #666;
+        }
+
+        {#.a {#}
+        {#    background-color: #3b5998;#}
+        {#    color: #fff;#}
+        {#    border: none;#}
+        {#    padding: 10px 20px;#}
+        {#    border-radius: 3px;#}
+        {#    font-size: 16px;#}
+        {#    cursor: pointer;#}
+        {#    position: fixed;#}
+        {#    bottom: 280px;#}
+        {#    right: 950px;#}
+        {
+        #}#}
+        {##}
+        {#.b {#}
+        {#    background-color: #3b5998;#}
+        {#    color: #fff;#}
+        {#    border: none;#}
+        {#    padding: 10px 20px;#}
+        {#    border-radius: 3px;#}
+        {#    font-size: 16px;#}
+        {#    cursor: pointer;#}
+        {#    position: fixed;#}
+        {#    bottom: 280px;#}
+        {#    right: 800px;#}
+        {
+        #}#}
+        {#.c {#}
+        {#    background-color: #3b5998;#}
+        {#    border: none;#}
+        {#    padding: 10px 20px;#}
+        {#    border-radius: 3px;#}
+        {#    font-size: 16px;#}
+        {#    cursor: pointer;#}
+        {#    position: fixed;#}
+        {#    bottom: 280px;#}
+        {#    right: 1150px;#}
+        {
+        #}#}
+        {#.d {#}
+        {#    background-color: #3b5998;#}
+        {##}
+        {#    border: none;#}
+        {#    padding: 10px 20px;#}
+        {#    border-radius: 3px;#}
+        {#    font-size: 16px;#}
+        {#    cursor: pointer;#}
+        {#    position: fixed;#}
+        {#    bottom: 280px;#}
+        {#    right: 1300px;#}
+        {
+        #}#}
+
+        input[type=submit], button {
+            color: white;
+            background-color: #3b5998; /* 将深蓝色作为主色调 */
+            font-size: 16px;
+            padding: 10px 20px;
+            border-radius: 5px;
+            border: none;
+            margin: 10px;
+        }
+
+        .a, .b, .d {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+        }
+
+        .a {
+            margin-left: 50px;
+            bottom: 50px
+        }
+
+        .b {
+            margin-left: 160px;
+            bottom: 50px
+        }
+
+        .d {
+            margin-left: 270px;
+            bottom: 50px
+        }
+
+        {#.d {#}
+        {#  margin-left: 380px;#}
+        {#    bottom: 50px#}
+        {
+        #}#}
+
+    </style>
+</head>
+<body>
+
+<table>
+    <thead>
+    <h1>开课状态</h1>
+    <tr>
+
+        <th>课程号</th>
+        <th>课程类型</th>
+        <th>开放状态</th>
+        <th>起始学分</th>
+        <th>选修年级</th>
+
+
+    </tr>
+    </thead>
+    <tbody>
+    {% for course in course_detail %}
+
+
+
+
+        <tr>
+
+
+            <td>{{ course.num }}</td>
+            <td>{{ course.Course_Type }}</td>
+            <td>{{ course.enroll_status }}</td>
+            <td>{{ course.gpa_condition }}</td>
+            <td>{{ course.level_condition }}</td>
+
+        </tr>
+
+    {% endfor %}
+    </tbody>
+
+</table>
+</body>
+<button onclick="location.href='/course/list/'" style="position: fixed; bottom: 50px; right: 50px;">返回</button>
+</html>

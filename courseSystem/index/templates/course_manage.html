@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>课程管理</title>
+
+    <style>
+        body {
+            background-color: #f7f7f7;
+        }
+
+        table {
+            width: 800px;
+            margin: 50px auto;
+            border-collapse: collapse;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: center;
+            border: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #72a1ef;
+            font-size: 16px;
+            color: #323f41;
+        }
+
+        td {
+            font-size: 14px;
+            color: #666;
+        }
+
+        .btn-edit, .btn-delete {
+            display: inline-block;
+            padding: 5px 10px;
+            border-radius: 3px;
+            font-size: 14px;
+            color: #fff;
+            cursor: pointer;
+        }
+
+        .btn-edit {
+            background-color: #6cd790;
+            border: none;
+            margin-right: 10px;
+        }
+
+        .btn-delete {
+            background-color: #d34242;
+            border: none;
+        }
+
+        .btn-return {
+            position: fixed;
+            bottom: 50px;
+            right: 50px;
+            padding: 10px;
+            border: none;
+            font-size: 16px;
+            color: #fff;
+            background-color: #3B5998;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+<table>
+    <thead>
+    <tr>
+        <th>课程序号</th>
+        <th>课程号</th>
+        <th>课程名称</th>
+        <th>课时</th>
+
+        <th>操作</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for course in course_manage %}
+        <tr>
+            <td>{{ course.id }}</td>
+            <td>{{ course.name }}</td>
+            <td>{{ course.num }}</td>
+            <td>{{ course.time }}</td>
+            <td>
+                <button class="btn-edit" value="button1" onclick="location.href='/course/update/'">修改</button>
+                <button class="btn-delete" value="button2" onclick="location.href='/course/delete/'">删除</button>
+
+            </td>
+
+
+        </tr>
+
+    {% endfor %}
+
+    </tbody>
+</table>
+<button class="btn-return" onclick="location.href='/course/list/'">返回</button>
+</body>
+</html>

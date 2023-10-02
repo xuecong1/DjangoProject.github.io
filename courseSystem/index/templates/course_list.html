@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>课程列表</title>
+    <style>
+        body {
+            background-color: #F7F7F7;
+        }
+
+        table {
+            width: 600px;
+            margin: 100px auto auto;
+            border-collapse: collapse;
+            background-color: #FFF;
+            border-radius: 5px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: center;
+            border: 1px solid #DDD;
+        }
+
+        th {
+            background-color: #72a1ef;
+            font-size: 16px;
+            color: #323f41;
+        }
+
+        h1 {
+            color: #3b5998;
+            margin-bottom: 20px;
+            text-align: center;
+            height: 0px;
+        }
+
+        td {
+            font-size: 14px;
+            color: #666;
+        }
+
+        {#.a {#}
+        {#    background-color: #3b5998;#}
+        {#    color: #fff;#}
+        {#    border: none;#}
+        {#    padding: 10px 20px;#}
+        {#    border-radius: 3px;#}
+        {#    font-size: 16px;#}
+        {#    cursor: pointer;#}
+        {#    position: fixed;#}
+        {#    bottom: 280px;#}
+        {#    right: 950px;#}
+        {
+        #}#}
+        {##}
+        {#.b {#}
+        {#    background-color: #3b5998;#}
+        {#    color: #fff;#}
+        {#    border: none;#}
+        {#    padding: 10px 20px;#}
+        {#    border-radius: 3px;#}
+        {#    font-size: 16px;#}
+        {#    cursor: pointer;#}
+        {#    position: fixed;#}
+        {#    bottom: 280px;#}
+        {#    right: 800px;#}
+        {
+        #}#}
+        {#.c {#}
+        {#    background-color: #3b5998;#}
+        {#    border: none;#}
+        {#    padding: 10px 20px;#}
+        {#    border-radius: 3px;#}
+        {#    font-size: 16px;#}
+        {#    cursor: pointer;#}
+        {#    position: fixed;#}
+        {#    bottom: 280px;#}
+        {#    right: 1150px;#}
+        {
+        #}#}
+        {#.d {#}
+        {#    background-color: #3b5998;#}
+        {##}
+        {#    border: none;#}
+        {#    padding: 10px 20px;#}
+        {#    border-radius: 3px;#}
+        {#    font-size: 16px;#}
+        {#    cursor: pointer;#}
+        {#    position: fixed;#}
+        {#    bottom: 280px;#}
+        {#    right: 1300px;#}
+        {
+        #}#}
+
+        input[type=submit], button {
+            color: white;
+            background-color: #3b5998; /* 将深蓝色作为主色调 */
+            font-size: 16px;
+            padding: 10px 20px;
+            border-radius: 5px;
+            border: none;
+            margin: 10px;
+        }
+
+        .a, .b, .d, .e, .f {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+        }
+
+        .a {
+            margin-left: 50px;
+            bottom: 50px
+        }
+
+        .b {
+            margin-left: 160px;
+            bottom: 50px
+        }
+
+        .d {
+            margin-left: 270px;
+            bottom: 50px
+        }
+
+        .e {
+            margin-left: 380px;
+            bottom: 50px
+        }
+
+        .f {
+            margin-left: 490px;
+            bottom: 50px
+        }
+    </style>
+</head>
+<body>
+<form method="post" action="/course/list/" class="a">
+    {% csrf_token %}
+    <input type="hidden" name="form" value="form1">
+    <input type="submit" value="添加课程">{{ msg }}
+</form>
+<form action="/course/list/" method="post" class="b">
+    {% csrf_token %}
+    <input type="hidden" name="form" value="form2">
+    <input type="submit" value="管理课程">{{ msg }}
+</form>
+
+<form action="/course/list/" method="post" class="d">
+    {% csrf_token %}
+    <input type="hidden" name="form" value="form3">
+    <input type="submit" value="查询课程">{{ msg }}
+</form>
+<form action="/course/list/" method="post" class="e">
+    {% csrf_token %}
+    <input type="hidden" name="form" value="form4">
+    <input type="submit" value="开课状态">{{ msg }}
+</form>
+<form action="/course/list/" method="post" class="f">
+    {% csrf_token %}
+    <input type="hidden" name="form" value="form5">
+    <input type="submit" value="开课登记">{{ msg }}
+</form>
+<table>
+    <thead>
+    <h1>课程列表</h1>
+    <tr>
+        <th>课程序号</th>
+        <th>课程名称</th>
+        <th>课程号</th>
+        <th>课时</th>
+
+
+    </tr>
+    </thead>
+    <tbody>
+    {% for course in course_list %}
+
+
+
+
+        <tr>
+            <td>{{ course.id }}</td>
+            <td>{{ course.name }}</td>
+            <td>{{ course.num }}</td>
+            <td>{{ course.time }}</td>
+
+
+        </tr>
+
+    {% endfor %}
+    </tbody>
+
+</table>
+</body>
+<button onclick="location.href='http://127.0.0.1:8000'" style="position: fixed; bottom: 50px; right: 50px;">退出
+</button>
+</html>

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>查找课程</title>
+	<meta charset="UTF-8">
+	<style>
+		body {
+			background-color: #E6F2FF;
+			color: #333;
+			font-family: Arial, sans-serif;
+		}
+		h1 {
+			text-align: center;
+			margin-top: 50px;
+			margin-bottom: 30px;
+			color: #3B5998;
+		}
+		form {
+			width: 500px;
+			margin: 0 auto;
+			border: 1px solid #ccc;
+			padding: 20px;
+			background-color: #fff;
+			border-radius: 5px;
+		}
+		label {
+			display: block;
+			margin-bottom: 10px;
+			font-size: 16px;
+			color: #3B5998;
+		}
+		input[type="text"] {
+			padding: 5px;
+			font-size: 16px;
+			border: 1px solid #ccc;
+			border-radius: 3px;
+			width: 100%;
+			box-sizing: border-box;
+			margin-bottom: 20px;
+		}
+		button[type="submit"] {
+			background-color: #3B5998;
+			color: #fff;
+			border: none;
+			padding: 10px 20px;
+			border-radius: 3px;
+			font-size: 16px;
+			cursor: pointer;
+            display: block;
+            margin: 0 auto;
+		}
+        span{
+            color:red;
+        }
+        body {
+      font-size: 16px;
+      color: #3B5998;
+      text-align: center;
+    }
+    h1 {
+      margin-top: 20px;
+    }
+    p {
+      margin-bottom: 10px;
+    }
+    label {
+      width: 80px;
+      display: inline-block;
+      font-weight: bold;
+    }
+    button{
+          color: white;
+          background-color: #3b5998; /* 将深蓝色作为主色调 */
+          font-size: 16px;
+          padding: 10px 20px;
+          border-radius: 5px;
+          border: none;
+          margin: 10px;
+        }
+	</style>
+</head>
+<body>
+	<h1>查找课程</h1>
+
+	<form action="/course/cleck/" method="post">
+        {% csrf_token %}
+		<label for="coursename">课程名称：</label>
+		<input type="text" id="username" name="coursename" placeholder="请输入课程名">
+		<button type="submit">查找课程</button><span>{{ msg }}</span>
+	</form>
+<table>
+{% if course_cleck %}
+
+  <p>ID: {{ course_cleck.id }}</p>
+  <p>课程名: {{ course_cleck.name }}</p>
+  <p>课程号: {{ course_cleck.num }}</p>
+  <p>时课时: {{ course_cleck.time }}</p>
+</table>
+{% endif %}
+</body>
+<button onclick="location.href='/course/list/'" style="position: fixed; bottom: 50px; right: 50px;">返回</button>
+</html>

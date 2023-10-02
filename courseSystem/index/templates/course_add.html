@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>添加课程</title>
+    <style>
+        body {
+            background-color: #e9f2fb;
+            font-family: 'Microsoft Yahei', sans-serif;
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        h1 {
+            color: #3b5998;
+            margin-bottom: 20px;
+        }
+
+        .a {
+            display: inline-block;
+            text-align: left;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        input[type=text], input[type=password] {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border-radius: 3px;
+            border: 1px solid #ccc;
+            box-sizing: border-box;
+            font-size: 16px;
+        }
+
+        input[type=submit] {
+            background-color: #3b5998;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 3px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        input[type=submit]:hover {
+            background-color: #293e6a;
+        }
+
+        span {
+            color: red;
+        }
+
+        button {
+            color: white;
+            background-color: #3b5998; /* 将深蓝色作为主色调 */
+            font-size: 16px;
+            padding: 10px 20px;
+            border-radius: 5px;
+            border: none;
+            margin: 10px;
+        }
+
+        .e,.f {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+        }
+
+        .f {
+            margin-left: 50px;
+            bottom: 50px
+        }
+        .e {
+            margin-left: 160px;
+            bottom: 50px
+        }
+    </style>
+</head>
+<body>
+<h1>添加课程</h1>
+<form method="post" action="/course/add/" class="a">
+    {% csrf_token %}
+    <label for="coursename">课程名称：</label>
+    <input type="text" name="coursename" placeholder="课程名称">
+    <label for="coursenum">课程号：</label>
+    <input type="text" name="coursenum" placeholder="课程号">
+    <label for="coursetime">课时：</label>
+    <input type="text" name="coursetime" placeholder="课时">
+    <input type="submit" value="添加"><span>{{ msg }}</span>
+</form>
+<button onclick="location.href='/course/list/'" style="position: fixed; bottom: 50px; right: 50px;">返回</button>
+<form action="/course/list/" method="post" class="f">
+    {% csrf_token %}
+    <input type="hidden" name="form" value="form5">
+    <input type="submit" value="开课登记">{{ msg }}
+</form>
+<form action="/course/list/" method="post" class="e">
+    {% csrf_token %}
+    <input type="hidden" name="form" value="form4">
+    <input type="submit" value="开课状态">{{ msg }}
+</form>
+</body>
+</html>

@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>开课登记</title>
+
+    <style>
+        body {
+            background-color: #E6F2FF;
+            color: #333;
+            font-family: Arial, sans-serif;
+        }
+
+        h2 {
+            text-align: center;
+
+            color: #3B5998;
+        }
+
+        h4 {
+        {#text-align: center;#} color: #3B5998;
+        }
+
+        form {
+            width: 500px;
+            margin: 0 auto;
+            border: 1px solid #ccc;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 5px;
+        }
+
+        label {
+        {#display: block;#}{#margin-bottom: 10px;#}{#font-size: 16px;#} color: #3B5998;
+        }
+
+        input[type="text"] {
+            padding: 5px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+            width: 100%;
+            box-sizing: border-box;
+            margin-bottom: 20px;
+        }
+
+        input[type=submit] {
+            background-color: #3B5998;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 3px;
+            font-size: 16px;
+            cursor: pointer;
+            display: block;
+            margin: 0 auto;
+        }
+
+        select {
+            width: 100%;
+            padding: 5px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+            box-sizing: border-box;
+            margin-bottom: 20px;
+        }
+
+        input[type="number"] {
+            width: 100%;
+            padding: 5px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+            box-sizing: border-box;
+            margin-bottom: 20px;
+        }
+
+        span, .error {
+            color: red;
+        }
+
+        button {
+            color: white;
+            background-color: #3b5998; /* 将深蓝色作为主色调 */
+            font-size: 16px;
+            padding: 10px 20px;
+            border-radius: 5px;
+            border: none;
+            margin: 10px;
+            cursor: pointer;
+        }
+
+        input[type="radio"] {
+            margin-right: 10px;
+        }
+
+        input[type="radio"] + label {
+            margin-right: 20px;
+            font-size: 16px;
+            color: #3B5998;
+        }
+
+    </style>
+</head>
+<body>
+
+
+<hr>
+
+<h2>开课登记</h2>
+<form method="POST" action="/course/register/">
+    {% csrf_token %}
+    <label for="type">课程号：</label>
+    <input type="text" name="num" placeholder="请输入课程号" required>
+    <br>
+
+
+    <label for="type">课程类型：</label>
+    <select id="type" name="type">
+        <option value="">请选择类型</option>
+        {% for course_type in course_type_list %}
+            <option value="{{ course_type.Course_Type }}">{{ course_type.Course_Type }}</option>
+        {% endfor %}
+    </select>
+    <br>
+    <h4>选课状态</h4>
+
+
+    <input id="status-enroll" type="radio" name="enroll-status" value="开放选课" checked>
+    <label for="status-enroll">开放选课</label>
+
+    <input id="status-closed" type="radio" name="enroll-status" value="已关闭选课">
+    <label for="status-closed">已关闭选课</label>
+
+    <input id="status-pending" type="radio" name="enroll-status" value="待定">
+    <label for="status-pending">待定</label>
+
+
+    <h4>选课条件</h4>
+    <label for="condition-gpa">GPA 大于等于</label>
+    <input id="condition-gpa" type="number" step="0.1" min="0" max="4" name="gpa-condition">
+    <br>
+
+    <label for="condition-level">年级</label>
+    <select id="condition-level" name="level-condition">
+        <option value="">请选择年级</option>
+        <option value="大一">大一</option>
+        <option value="大二">大二</option>
+        <option value="大三">大三</option>
+        <option value="大四">大四</option>
+    </select>
+    <br>
+    <button class="btn-register" type="submit">登记</button>
+    <button onclick="location.href='/course/add/'" style="position: fixed; bottom: 50px; right: 50px;">返回</button>
+</form>
+</body>
+</html>
